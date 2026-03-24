@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: boutique
+  datasource:
+    url:
+    username:
+    password:
