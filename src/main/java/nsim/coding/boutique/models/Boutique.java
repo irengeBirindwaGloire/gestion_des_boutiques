@@ -1,6 +1,5 @@
 package nsim.coding.boutique.models;
 
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +58,7 @@ public class Boutique {
 
     @OneToMany(mappedBy = "boutique")
     @Builder.Default
-    private List<Produit> produits = new ArrayList<>();
+    private List<Product> produits = new ArrayList<>();
 
     @OneToMany(mappedBy = "boutique")
     @Builder.Default

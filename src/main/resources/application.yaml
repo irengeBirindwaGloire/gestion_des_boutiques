@@ -1,7 +1,35 @@
 spring:
   application:
     name: boutique
+  
   datasource:
-    url:
-    username:
-    password:
+    url: jdbc:mysql://localhost:3306/boutique
+    username: balezi
+    password: enoch
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      time: HH:mm:ss
+      date-time: yyyy-MM-dd HH:mm:ss
+
+server:
+  servlet:
+    context-path: /boutique
+  port: 8080
+
+logging:
+  charset:
+    console: UTF-8
+  level:
+    root: INFO
+    com.balezi: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

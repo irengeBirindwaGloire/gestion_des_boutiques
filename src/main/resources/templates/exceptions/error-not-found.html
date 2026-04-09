@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/base.template}"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="https://www.booots" type="image/x-icon">
+</head>
+<body>
+    <div layout:fragment="content-app">
+        <h6 th:text="${appMessage}"></h6>
+        <h1 class="text-center text-muted">Page Not Found</h1>
+    </div>
+</body>
+</html>

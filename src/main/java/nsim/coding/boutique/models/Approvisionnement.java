@@ -29,28 +29,28 @@ public class Approvisionnement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idStock;
+    private Long idApp;
 
-    @NotNull(message = "La quantité approvisionnée est obligatoire")    
+    @NotNull(message = "La quantité approvisionnée est obligatoire")
     private int quantite;
-    
+
     @NotNull(message = "Le seuil de réapprovisionnement est obligatoire")
     private int seuilReapprovisionnement;
-             
+
     @NotNull(message = "La date d'approvisionnement est obligatoire")
     private LocalDate dateApprovisionnement;
-       
+
     @NotNull(message = "Le fournisseur est obligatoire")
-    private String fournisseur; 
-    
+    private String fournisseur;
+
     @NotNull(message = "Le numéro de lot est obligatoire")
     private String numeroLot;
-   
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "produit_id")
-    private Produit produit;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "produit_id")
+    private Product produit;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "boutique_id")
     private Boutique boutique;
 

@@ -39,5 +39,5 @@ public class Categorie {
 
     @OneToMany(mappedBy = "categorie")
     @Builder.Default
-    private List<Produit> produits = new ArrayList<>();
+    private List<Product> produits = new ArrayList<>();
 }
