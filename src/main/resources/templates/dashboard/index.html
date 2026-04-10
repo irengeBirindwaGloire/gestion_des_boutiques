@@ -1,0 +1,70 @@
+<!doctype html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/font-awesome/6.7.2/css/all.css}"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/font-awesome/6.7.2/css/fontawesome.css}"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-family:
+          "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+          Arial, sans-serif;
+        list-style: none;
+      }
+      .nav-bar {
+        padding: 20px 10px;
+      }
+      .nav-items {
+        margin-bottom: 0;
+      }
+      .nav-items .items {
+        display: inline;
+        margin: 10px;
+      }
+      .items a {
+        text-decoration: none;
+        color: black;
+        font-size: 0.9rem;
+      }
+    </style>
+    <script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.min.js}"></script>
+  </head>
+  <body>
+    <header class="bg-light">
+      <nav class="nav-bar">
+        <ul class="nav-items">
+          <li class="items"><a th:href="@{/}">Dashboard</a></li>
+          <li class="items"><a th:href="@{/store/}">Boutiques</a></li>
+          <li class="items"><a th:href="@{/categorie}">Categories</a></li>
+          <li class="items"><a th:href="@{/product}">Produits</a></li>
+          <li class="items"><a th:href="@{/gestion}">Gestion Produits</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-center"><i class="fas fa-dashboard"></i> Dashboard</h1>
+      </div>
+    </div>
+  </body>
+</html>

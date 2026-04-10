@@ -30,8 +30,6 @@ public class ProductDto {
 
     private String codeBarre;
 
-    private BoutiqueDto boutique;
-
     private CategorieDto categorie;
 
     public static ProductDto fromEntity(Product product) {
@@ -47,7 +45,6 @@ public class ProductDto {
         productDto.setTva(product.getPrix());
         productDto.setImageUrl(product.getImageUrl());
         productDto.setCodeBarre(product.getCodeBarre());
-        productDto.setBoutique(BoutiqueDto.fromEntity(product.getBoutique()));
         productDto.setCategorie(CategorieDto.fromEntity(product.getCategorie()));
 
         return productDto;
@@ -66,7 +63,6 @@ public class ProductDto {
         prod.setTva(productDto.getPrix());
         prod.setImageUrl(productDto.getImageUrl());
         prod.setCodeBarre(productDto.getCodeBarre());
-        prod.setBoutique(BoutiqueDto.toEntity(productDto.getBoutique()));
         prod.setCategorie(CategorieDto.toEntity(productDto.getCategorie()));
 
         return prod;

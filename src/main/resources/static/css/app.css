@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family:
+    "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+    Arial, sans-serif;
+  list-style: none;
+}
+
+.nav-bar {
+  padding: 20px 10px;
+}
+
+.nav-items {
+  margin-bottom: 0;
+}
+
+.nav-items .items {
+  display: inline;
+  margin: 10px;
+}
+
+.items a {
+  text-decoration: none;
+  color: black;
+  font-size: 0.9rem;
+}

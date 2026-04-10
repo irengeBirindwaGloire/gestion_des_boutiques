@@ -36,7 +36,7 @@ public class Product {
     @NotNull(message = "Le nom du produit est obligatoire")
     private String nom;
 
-    @NotNull(message = "La description du produit est obligatoire") 
+    @NotNull(message = "La description du produit est obligatoire")
     private String description;
 
     @NotNull(message = "Le prix du produit est obligatoire")
@@ -47,15 +47,11 @@ public class Product {
 
     @NotNull(message = "L'URL de l'image du produit est obligatoire")
     private String imageUrl;
-    
+
     @NotNull(message = "Le code à barres du produit est obligatoire")
     private String codeBarre;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional=false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "boutique_id")
-    private Boutique boutique;
-
-    @ManyToOne(fetch = FetchType.EAGER, optional=false, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "categorie_id")
     private Categorie categorie;
 

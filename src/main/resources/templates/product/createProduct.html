@@ -1,0 +1,308 @@
+<!doctype html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boutique</title>
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/font-awesome/6.7.2/css/all.css}"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/font-awesome/6.7.2/css/fontawesome.css}"
+    />
+
+    <script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.min.js}"></script>
+  </head>
+  <body>
+    <header class="bg-light">
+      <nav class="nav-bar">
+        <ul class="nav-items">
+          <li class="items"><a th:href="@{/}">Dashboard</a></li>
+          <li class="items"><a th:href="@{/store/}">Boutiques</a></li>
+          <li class="items"><a th:href="@{/categorie/}">Categories</a></li>
+          <li class="items"><a th:href="@{/product/}">Produits</a></li>
+          <li class="items"><a th:href="@{/gestion/}">Gestion Produits</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container-fluid">
+      <div class="m-2">
+        <h5 class="text-muted mb-0">
+          <i class="fas fa-dashboard"></i> Dashboard
+        </h5>
+        <p class="mb-0">Gestion des boutiques</p>
+      </div>
+      <div class="col-10 mx-auto mb-3">
+        <div class="card shadow">
+          <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="text-muted text-uppercase text-center mb-0">
+                Identification boutique
+              </h5>
+              <a href="" class="btn"
+                ><i class="fa fa-list"></i> Liste des boutiques</a
+              >
+            </div>
+          </div>
+          <div class="card-body">
+            <form
+              th:action="@{/store/addBoutique}"
+              method="post"
+              th:object="${boutique}"
+            >
+              <div class="row">
+                <div class="col-md-4 border-end">
+                  <h6 class="text-muted mb-3">Gestion Compte</h6>
+                  <img
+                    th:src="@{/img/images.png}"
+                    alt=""
+                    srcset=""
+                    class="w-100"
+                  />
+                  <div class="d-grid gap-2 p-3 mb-3 bg-light">
+                    <input type="file" class="form-control mb-0" />
+                  </div>
+                  <div class="mb-2">
+                    <label for="oldPassword" class="form-label">
+                      Ancier Mot de passe
+                    </label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      th:field="*{designation}"
+                      id="oldPassword"
+                    />
+                  </div>
+                  <div class="mb-2">
+                    <label for="newPassword" class="form-label">
+                      Nouveau Mot de passe
+                    </label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      th:field="*{designation}"
+                      id="newPassword"
+                    />
+                  </div>
+                  <div class="d-grid gap-2 p-3 mb-3">
+                    <a href="" class="btn btn-light p-2 text-uppercase">
+                      <i class="fa fa-save"></i> Changer Mot de passe
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <h6 class="text-muted mb-3">Information de la boutique</h6>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="designation" class="form-label"
+                          >Désignation</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="designation"
+                          th:field="*{designation}"
+                        />
+                        <input
+                          type="hidden"
+                          class="form-control"
+                          th:field="*{id}"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="propre" class="form-label"
+                          >Propriétaire</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="propre"
+                          th:field="*{nomProprietaire}"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="pays" class="form-label">Pays</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pays"
+                          th:field="*{pays}"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="ville" class="form-label">Ville</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="ville"
+                          th:field="*{ville}"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="adresse" class="form-label">Adresse</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="adresse"
+                          th:field="*{adresse}"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="codepostale" class="form-label"
+                          >Code Postal</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="codepostale"
+                          th:field="*{codePostal}"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                    <label for="configTva" class="form-label"
+                      >Configuration TVA</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="configTva"
+                      th:field="*{configTva}"
+                    />
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="pays" class="form-label">Pays</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pays"
+                          th:field="*{pays}"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="email" class="form-label">Email</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="email"
+                          th:field="*{email}"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="telephone" class="form-label"
+                          >Téléphone</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="telephone"
+                          th:field="*{telephone}"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="horaireOuverture" class="form-label"
+                          >Horaire Ouverture</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="horaireOuverture"
+                          th:field="*{horaireOuverture}"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="horaireFermeture" class="form-label"
+                          >Horaire Fermeture</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="horaireFermeture"
+                          th:field="*{horaireFermeture}"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label for="etatBoutique" class="form-label"
+                          >Etat Boutique</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="etatBoutique"
+                          th:field="*{etatBoutique}"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="d-grid gap-2 mb-3">
+                        <button type="reset" class="btn btn-dark">
+                          <i class="fa fa-refresh"></i> Nettoyer
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="d-grid gap-2 mb-3">
+                        <button type="submit" class="btn btn-primary ms-3">
+                          <i class="fa fa-save"></i> Enregistrer
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

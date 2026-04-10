@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,11 +26,11 @@ import nsim.coding.boutique.enums.EtatBoutique;
 @Getter
 @Setter
 @Builder
-@Table(name="boutiques")
+@Table(name = "boutiques")
 public class Boutique {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull(message = "La désignation de la boutique est obligatoire")
@@ -37,7 +39,7 @@ public class Boutique {
     private String nomProprietaire;
     @NotNull(message = "L'adresse de la boutique est obligatoire")
     private String adresse;
-    @NotNull(message = "La ville de la boutique est obligatoire")   
+    @NotNull(message = "La ville de la boutique est obligatoire")
     private String ville;
     @NotNull(message = "Le code postal de la boutique est obligatoire")
     private String codePostal;
@@ -51,14 +53,13 @@ public class Boutique {
     private String horaireOuverture; // ex: "09:00"
     @NotNull(message = "L'horaire de fermeture de la boutique est obligatoire")
     private String horaireFermeture; // ex: "18:00"
+
     @NotNull(message = "L'état de la boutique est obligatoire")
+    @Enumerated(EnumType.STRING)
     private EtatBoutique etatBoutique;
+
     @NotNull(message = "Le taux de TVA configuré pour la boutique est obligatoire")
     private BigDecimal configTva;
-
-    @OneToMany(mappedBy = "boutique")
-    @Builder.Default
-    private List<Product> produits = new ArrayList<>();
 
     @OneToMany(mappedBy = "boutique")
     @Builder.Default
