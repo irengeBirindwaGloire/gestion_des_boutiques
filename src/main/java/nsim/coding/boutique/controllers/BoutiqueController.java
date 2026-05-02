@@ -30,7 +30,7 @@ public class BoutiqueController {
             @RequestParam(defaultValue = "10") int s) {
 
         model.addAttribute("listeBoutique", boutiqueService.getAllBoutiques(p, s));
-        return "boutique/index";
+        return "dashboard/index";
     }
 
     @GetMapping(path = "/new", name = "store.new")

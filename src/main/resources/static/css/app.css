@@ -8,21 +8,29 @@
   list-style: none;
 }
 
-.nav-bar {
-  padding: 20px 10px;
+body {
+  background-color: #f8f9fa;
 }
 
-.nav-items {
-  margin-bottom: 0;
+.dashboard-header {
+  padding: 1.5rem 0;
 }
 
-.nav-items .items {
-  display: inline;
-  margin: 10px;
+.card-analytics {
+  min-height: 140px;
 }
 
-.items a {
-  text-decoration: none;
-  color: black;
-  font-size: 0.9rem;
+.card-analytics .icon {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
 }
+
+.chart-placeholder {
+  min-height: 240px;
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.08), rgba(134, 239, 255, 0.08));
+  border: 1px dashed #cfe2ff;
+  border-radius: 1rem;}

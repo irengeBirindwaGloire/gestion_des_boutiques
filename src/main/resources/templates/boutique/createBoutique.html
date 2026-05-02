@@ -1,13 +1,13 @@
 <!doctype html>
 <html
-  lang="en"
+  lang="fr"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boutique</title>
+    <title>Ajouter une boutique</title>
     <link
       rel="stylesheet"
       th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}"
@@ -16,274 +16,324 @@
     <link
       rel="stylesheet"
       th:href="@{/webjars/font-awesome/6.7.2/css/all.css}"
-    />
-    <link
-      rel="stylesheet"
-      th:href="@{/webjars/font-awesome/6.7.2/css/fontawesome.css}"
-    />
-
-    <script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.min.js}"></script>
-  </head>
+    /> 
   <body>
-    <header class="bg-light">
-      <nav class="nav-bar">
-        <ul class="nav-items">
-          <li class="items"><a th:href="@{/}">Dashboard</a></li>
-          <li class="items"><a th:href="@{/store/}">Boutiques</a></li>
-          <li class="items"><a th:href="@{/categorie/}">Categories</a></li>
-          <li class="items"><a th:href="@{/product/}">Produits</a></li>
-          <li class="items"><a th:href="@{/gestion/}">Gestion Produits</a></li>
-        </ul>
-      </nav>
-    </header>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" th:href="@{/store/}">
+          <i class="fas fa-store text-light"></i> Boutique</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMenu"
+          aria-controls="navbarMenu"
+          aria-expanded="false"
+          aria-label="Menu mobile"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="container-fluid">
-      <div class="d-flex justify-content-between align-items-center m-3">
-        <div class="">
-          <h5 class="text-muted mb-0"><i class="fas fa-store"></i> Boutique</h5>
-          <p class="mb-0">Gestion des boutiques</p>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                th:href="@{/store/}"
+                >Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/store/}">Boutiques</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/categorie/}">Catégories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/product/}">Produits</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/gestion/}">Gestion</a>
+            </li>
+          </ul>
         </div>
-        <a th:href="@{/store/new}" class="btn btn-dark">
-          <i class="fa fa-arrow-left mr-2"></i> Retour
-        </a>
       </div>
-      <hr />
-      <div class="col-8 mx-auto mb-3">
-        <div th:if="${messageSucces}">
-          <div class="alert alert-success">
-            <p th:text="${messageSucces}"></p>
-          </div>
-        </div>
-        <div th:if="${messageError}">
-          <div class="alert alert-success">
-            <p th:text="${messageError}"></p>
-          </div>
-        </div>
-        <div class="card shadow">
-          <div class="card-header">
-            <div class="d-flex justify-content-between align-items-center">
-              <h6 class="text-muted text-center mb-0">
-                <i class="fa fa-store"></i>
-                Identification boutique
-              </h6>
-              <a th:href="@{/store/}" class="btn">
-                <i class="fa fa-list"></i> Liste des boutiques
+    </nav>
+
+
+    <main class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-12 col-xl-10">
+          <div
+            class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-3"
+          >
+            <div>
+              <p class="text-uppercase text-secondary small mb-2">
+                Création de boutique
+              </p>
+              <h1 class="h3 page-title mb-1">Ajouter une nouvelle boutique</h1>
+              <p class="text-muted mb-0">
+                Remplissez les informations clés pour enregistrer votre boutique
+                rapidement.
+              </p>
+            </div>
+            <div class="d-flex gap-2">
+              <a class="btn btn-outline-secondary" th:href="@{/store/}">
+                <i class="fas fa-arrow-left me-2"></i>Retour à la liste
               </a>
             </div>
           </div>
-          <div class="card-body">
-            <form
-              th:action="@{/store/addBoutique}"
-              method="post"
-              th:object="${boutique}"
-            >
-              <h6 class="text-muted mb-3">Information de la boutique</h6>
 
-              <div class="row">
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="designation" class="form-label">
-                      Désignation
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="designation"
-                      th:field="*{designation}"
-                      autocomplete="off"
-                    />
-                    <input
-                      type="hidden"
-                      class="form-control"
-                      th:field="*{id}"
-                      autocomplete="off"
-                    />
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="propre" class="form-label">Propriétaire</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="propre"
-                      th:field="*{nomProprietaire}"
-                      autocomplete="off"
-                    />
-                  </div>
-                </div>
+          <div class="card form-card shadow-sm bg-white">
+            <div class="card-body p-4">
+              <div
+                th:if="${messageSucces}"
+                class="alert alert-success rounded-3"
+              >
+                <i class="fas fa-check-circle me-2"></i>
+                <span th:text="${messageSucces}"></span>
+              </div>
+              <div th:if="${messageError}" class="alert alert-danger rounded-3">
+                <i class="fas fa-exclamation-circle me-2"></i>
+                <span th:text="${messageError}"></span>
               </div>
 
-              <div class="row">
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="pays" class="form-label">Pays</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="pays"
-                      th:field="*{pays}"
-                      autocomplete="off"
-                    />
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="ville" class="form-label">Ville</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="ville"
-                      th:field="*{ville}"
-                      autocomplete="off"
-                    />
-                  </div>
-                </div>
-              </div>
+              <form
+                th:action="@{/store/addBoutique}"
+                method="post"
+                th:object="${boutique}"
+              >
+                <input type="hidden" th:field="*{id}" />
 
-              <div class="row">
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="adresse" class="form-label">Adresse</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="adresse"
-                      th:field="*{adresse}"
-                      autocomplete="off"
-                    />
+                <section class="mb-4">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <div>
+                      <h5 class="mb-1">Informations générales</h5>
+                      <p class="text-muted mb-0">
+                        Données principales de la boutique.
+                      </p>
+                    </div>
+                    <span class="badge bg-primary">Étape 1</span>
                   </div>
-                </div>
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="codepostale" class="form-label"
-                      >Code Postal</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="codepostale"
-                      th:field="*{codePostal}"
-                      autocomplete="off"
-                    />
-                  </div>
-                </div>
-              </div>
 
-              <p class="text-muted mt-3 mb-3">Autres informations</p>
+                  <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                      <label for="designation" class="form-label"
+                        >Désignation</label
+                      >
+                      <input
+                        type="text"
+                        id="designation"
+                        class="form-control form-control-lg"
+                        th:field="*{designation}"
+                        placeholder="Nom de la boutique"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="nomProprietaire" class="form-label"
+                        >Propriétaire</label
+                      >
+                      <input
+                        type="text"
+                        id="nomProprietaire"
+                        class="form-control form-control-lg"
+                        th:field="*{nomProprietaire}"
+                        placeholder="Nom du propriétaire"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="email" class="form-label"
+                        >Email professionnel</label
+                      >
+                      <input
+                        type="email"
+                        id="email"
+                        class="form-control form-control-lg"
+                        th:field="*{email}"
+                        placeholder="contact@boutique.com"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="telephone" class="form-label"
+                        >Téléphone</label
+                      >
+                      <input
+                        type="tel"
+                        id="telephone"
+                        class="form-control form-control-lg"
+                        th:field="*{telephone}"
+                        placeholder="+243 81 000 0000"
+                        autocomplete="off"
+                      />
+                    </div>
+                  </div>
+                </section>
 
-              <div class="row">
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="configTva" class="form-label"
-                      >Configuration TVA</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="configTva"
-                      th:field="*{configTva}"
-                      autocomplete="off"
-                    />
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="email" class="form-label">Email</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="email"
-                      th:field="*{email}"
-                      autocomplete="off"
-                    />
-                  </div>
-                </div>
-              </div>
+                <div class="section-divider mb-4"></div>
 
-              <div class="row">
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="telephone" class="form-label">Téléphone</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="telephone"
-                      th:field="*{telephone}"
-                      autocomplete="off"
-                    />
+                <section class="mb-4">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <div>
+                      <h5 class="mb-1">Adresse & localisation</h5>
+                      <p class="text-muted mb-0">
+                        Zone géographique et code postal.
+                      </p>
+                    </div>
+                    <span class="badge bg-secondary">Étape 2</span>
                   </div>
-                </div>
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="horaireOuverture" class="form-label"
-                      >Horaire Ouverture</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="horaireOuverture"
-                      th:field="*{horaireOuverture}"
-                      autocomplete="off"
-                    />
-                  </div>
-                </div>
-              </div>
 
-              <div class="row">
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="horaireFermeture" class="form-label"
-                      >Horaire Fermeture</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="horaireFermeture"
-                      th:field="*{horaireFermeture}"
-                      autocomplete="off"
-                    />
+                  <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                      <label for="pays" class="form-label">Pays</label>
+                      <input
+                        type="text"
+                        id="pays"
+                        class="form-control"
+                        th:field="*{pays}"
+                        placeholder="RDC"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="ville" class="form-label">Ville</label>
+                      <input
+                        type="text"
+                        id="ville"
+                        class="form-control"
+                        th:field="*{ville}"
+                        placeholder="Kinshasa"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-12 col-md-8">
+                      <label for="adresse" class="form-label">Adresse</label>
+                      <input
+                        type="text"
+                        id="adresse"
+                        class="form-control"
+                        th:field="*{adresse}"
+                        placeholder="Avenue Exemple 123"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <label for="codePostal" class="form-label"
+                        >Code Postal</label
+                      >
+                      <input
+                        type="text"
+                        id="codePostal"
+                        class="form-control"
+                        th:field="*{codePostal}"
+                        placeholder="12345"
+                        autocomplete="off"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div class="col-6">
-                  <div class="mb-2">
-                    <label for="etatBoutique" class="form-label"
-                      >Etat Boutique</label
-                    >
-                    <select
-                      class="form-select"
-                      id="etatBoutique"
-                      th:field="*{etatBoutique}"
-                    >
-                      <option value="">Choisir</option>
-                      <option value="ACTIF">ACTIF</option>
-                      <option value="INACTIF">INACTIF</option>
-                      <option value="SUSPENDU">SUSPENDU</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+                </section>
 
-              <div class="row mt-3">
-                <div class="col-6">
-                  <div class="d-grid gap-2 mb-3">
-                    <button type="reset" class="btn btn-dark">
-                      <i class="fa fa-refresh"></i> Nettoyer
-                    </button>
+                <div class="section-divider mb-4"></div>
+
+                <section class="mb-4">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <div>
+                      <h5 class="mb-1">Détails opérationnels</h5>
+                      <p class="text-muted mb-0">
+                        Paramètres supplémentaires pour la boutique.
+                      </p>
+                    </div>
+                    <span class="badge bg-success">Étape 3</span>
                   </div>
-                </div>
-                <div class="col-6">
-                  <div class="d-grid gap-2 mb-3">
-                    <button type="submit" class="btn btn-primary ms-3">
-                      <i class="fa fa-save"></i> Enregistrer
-                    </button>
+
+                  <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                      <label for="configTva" class="form-label"
+                        >Configuration TVA</label
+                      >
+                      <input
+                        type="text"
+                        id="configTva"
+                        class="form-control"
+                        th:field="*{configTva}"
+                        placeholder="Ex: 19% or 0.18"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="etatBoutique" class="form-label"
+                        >État de la boutique</label
+                      >
+                      <select
+                        id="etatBoutique"
+                        class="form-select"
+                        th:field="*{etatBoutique}"
+                      >
+                        <option value="">Choisir un état</option>
+                        <option value="ACTIF">ACTIF</option>
+                        <option value="INACTIF">INACTIF</option>
+                        <option value="SUSPENDU">SUSPENDU</option>
+                      </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="horaireOuverture" class="form-label"
+                        >Horaire d’ouverture</label
+                      >
+                      <input
+                        type="text"
+                        id="horaireOuverture"
+                        class="form-control"
+                        th:field="*{horaireOuverture}"
+                        placeholder="08:00"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="horaireFermeture" class="form-label"
+                        >Horaire de fermeture</label
+                      >
+                      <input
+                        type="text"
+                        id="horaireFermeture"
+                        class="form-control"
+                        th:field="*{horaireFermeture}"
+                        placeholder="18:00"
+                        autocomplete="off"
+                      />
+                    </div>
                   </div>
+                </section>
+
+                <div
+                  class="d-flex flex-column flex-md-row justify-content-end gap-3 mt-4"
+                >
+                  <button type="reset" class="btn btn-outline-secondary btn-lg">
+                    <i class="fas fa-eraser me-2"></i>Réinitialiser
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="fas fa-save me-2"></i>Enregistrer la boutique
+                  </button>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
+
+    <script
+      th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js}"
+    ></script>
   </body>
 </html>
